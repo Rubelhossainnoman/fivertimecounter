@@ -1,0 +1,9 @@
+form.fiver_timer {
+    gap: 10px;
+}
+form.fiver_timer .my-3 {
+    flex: 1;
+}
+#progress_bardiv{
+    height: 0px;
+}
