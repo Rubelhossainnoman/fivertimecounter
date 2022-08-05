@@ -18,6 +18,7 @@ fiver_timer.onsubmit = (e) =>{
   const object_data = Object.fromEntries(form_data.entries());
   const {date,times,index} = Object.fromEntries(form_data.entries());
 
+
   // Get Times...here..
 
     let start_time = Date.now();
@@ -29,20 +30,19 @@ fiver_timer.onsubmit = (e) =>{
 
     time_counter(date,times,msg,count,a1);
 
-    if (!date || !times) {
-      msg.innerHTML = '';
-      alert_msg.innerHTML = setaleart('All Field Are Required','danger');
-    }else{
-      alert_msg.innerHTML = '';
-    };
-
     let per = counter_per(start_time, end_time);
     progress_bardiv.style.height = '15px';
     progress_bar.style.width = `${per}%`;
 
     // Showing progressbar value...
 
-    progress_bar_val.innerHTML = `${per} %`;
+    if (!date || !times) {
+      progress_bar_val.innerHTML = ``;
+    }else{
+      progress_bar_val.innerHTML = `${per} %`;
+    };
+
+    
 
     if (per <= 50) {
       progress_bar.style.backgroundColor = 'red';

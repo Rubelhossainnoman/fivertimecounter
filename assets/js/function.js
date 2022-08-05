@@ -11,6 +11,7 @@ const setaleart = (msg,type = 'danger') =>{
 */
 const time_counter = (date,times,msg,interval = false,a1 = 0) =>{
 
+
     let start_time = Date.now();
     let end_time = new Date(date + ' ' + times);
     let order_time = Math.floor(Math.abs((end_time.getTime() - start_time)));
@@ -27,7 +28,13 @@ const time_counter = (date,times,msg,interval = false,a1 = 0) =>{
     let second = t_secound - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
   
     // Showing...
-    msg.innerHTML = ` ${day} Days : ${hour} Hours : ${minute} Minute : ${second} Secound`;
+    if (!date || !times) {
+      msg.innerHTML = '';
+      alert_msg.innerHTML = setaleart('All Field Are Required','danger');
+    }else{
+      msg.innerHTML = ` ${day} Days : ${hour} Hours : ${minute} Minute : ${second} Secound`;
+      alert_msg.innerHTML = '';
+    };
 
     if (t_secound <= 0) {
       a1.play();
